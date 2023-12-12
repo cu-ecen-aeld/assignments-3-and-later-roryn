@@ -102,8 +102,8 @@ sudo chmod -R 777 ${OUTDIR}/
 
 # TODO: Make device nodes
 cd "$OUTDIR/rootfs"
-mknod -m 0666 dev/null c 1 3
-mknod -m 0666 dev/console c 5 1
+sudo mknod -m 0666 dev/null c 1 3
+sudo mknod -m 0666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
 cd ~/Assignments/assignment-1-roryn/finder-app

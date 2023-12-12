@@ -97,10 +97,13 @@ find /home/rory/ -type f -name "libm.so.6" -exec cp {} ${OUTDIR}/rootfs/lib64/ \
 find /home/rory/ -type f -name "libresolv.so.2" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
 find /home/rory/ -type f -name "libc.so.6" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
 
+# TODO: Chown the root directory
+sudo chmod -R 777 ${OUTDIR}/
+
 # TODO: Make device nodes
 cd "$OUTDIR/rootfs"
-sudo mknod -m 0666 dev/null c 1 3
-sudo mknod -m 0666 dev/console c 5 1
+mknod -m 0666 dev/null c 1 3
+mknod -m 0666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
 cd ~/Assignments/assignment-1-roryn/finder-app
@@ -116,9 +119,6 @@ mkdir ${OUTDIR}/rootfs/home/conf
 cp -r conf/username.txt ${OUTDIR}/rootfs/home/conf
 cp -r conf/assignment.txt ${OUTDIR}/rootfs/home/conf
 cp autorun-qemu.sh ${OUTDIR}/rootfs/home
-
-# TODO: Chown the root directory
-sudo chmod -R 777 ${OUTDIR}/
 
 # TODO: Create initramfs.cpio.gz
 cd "$OUTDIR/rootfs"

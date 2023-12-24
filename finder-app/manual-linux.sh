@@ -12,8 +12,7 @@ BUSYBOX_VERSION=1_33_1
 FINDER_APP_DIR=$(realpath $(dirname $0))
 ARCH=arm64
 CROSS_COMPILE=aarch64-none-linux-gnu-
-
-script_dir=$(dirname $0)
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 if [ $# -lt 1 ]
 then
@@ -108,7 +107,8 @@ sudo mknod -m 0666 dev/null c 1 3
 sudo mknod -m 0666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
-cd script_dir
+cd "$SCRIPT_DIR"
+pwd
 make CROSS_COMPILE=aarch64-none-linux-gnu- clean
 make CROSS_COMPILE=aarch64-none-linux-gnu- build
 

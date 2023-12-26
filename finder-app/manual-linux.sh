@@ -53,7 +53,7 @@ fi
 
 mkdir -p rootfs
 cd rootfs
-mkdir -p bin dev etc hoe lib lib64 proc sbin sys tmp usr var
+mkdir -p bin dev etc hoe lib lib64 proc sbin sys tmp usr var home
 mkdir -p usr/bin usr/lib usr/sbin
 mkdir -p var/log
 
@@ -115,9 +115,9 @@ make CROSS_COMPILE=aarch64-none-linux-gnu- build
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
 
-mkdir ${OUTDIR}/rootfs/home
-cp writer.c writer.o finder.sh finder-test.sh writer.sh writer ${OUTDIR}/rootfs/home
-mkdir ${OUTDIR}/rootfs/home/conf
+mkdir ${OUTDIR}/rootfs/home/finder-app
+cp writer.c writer.o finder.sh finder-test.sh writer.sh writer ${OUTDIR}/rootfs/home/finder-app
+mkdir ${OUTDIR}/rootfs/home/finder-app/conf
 cp -r conf/username.txt ${OUTDIR}/rootfs/home/conf
 cp -r conf/assignment.txt ${OUTDIR}/rootfs/home/conf
 cp autorun-qemu.sh ${OUTDIR}/rootfs/home

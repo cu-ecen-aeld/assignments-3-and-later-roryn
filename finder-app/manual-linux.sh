@@ -77,6 +77,7 @@ cd "$OUTDIR"
 cp -r bin ${OUTDIR}/rootfs
 cp -r sbin ${OUTDIR}/rootfs
 cp -r usr ${OUTDIR}/rootfs
+cp linuxrc ${OUTDIR}/rootfs
 
 echo "Library dependencies"
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "program interpreter"

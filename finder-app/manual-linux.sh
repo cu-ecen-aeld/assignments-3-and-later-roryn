@@ -116,7 +116,6 @@ make CROSS_COMPILE=aarch64-none-linux-gnu- build
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
 
-mkdir ${OUTDIR}/rootfs/home
 cp writer.c writer.o finder.sh finder-test.sh writer.sh writer ${OUTDIR}/rootfs/home
 mkdir ${OUTDIR}/rootfs/home/conf
 cp -r conf/username.txt ${OUTDIR}/rootfs/home/conf

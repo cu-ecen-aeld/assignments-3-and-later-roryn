@@ -100,7 +100,7 @@ find /home/ -type f -name "libresolv.so.2" -exec cp {} ${OUTDIR}/rootfs/lib64/ \
 find /home/ -type f -name "libc.so.6" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
 
 # TODO: Chown the root directory
-sudo chmod -R 777 ${OUTDIR}/
+sudo chmod ugo+rwx ${OUTDIR}
 
 # TODO: Make device nodes
 cd "$OUTDIR/rootfs"
@@ -108,6 +108,8 @@ sudo mknod -m 0666 dev/null c 1 3
 sudo mknod -m 0666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
+
+sudo chmod ugo+rwx ${SCRIPT_DIR}
 cd "$SCRIPT_DIR"
 pwd
 make CROSS_COMPILE=aarch64-none-linux-gnu- clean

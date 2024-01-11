@@ -129,4 +129,4 @@ cd "$OUTDIR/rootfs"
 find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
 gzip -f ${OUTDIR}/initramfs.cpio
 
-read -p "Press Enter"
+Pause

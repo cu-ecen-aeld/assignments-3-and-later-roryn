@@ -84,20 +84,20 @@ ${CROSS_COMPILE}readelf -a bin/busybox | grep "program interpreter"
 ${CROSS_COMPILE}readelf -a bin/busybox | grep "Shared library"
 
 # TODO: Add library dependencies to rootfs
-#find /home/rory/ -type f -name "lib/ld-linux-aarch64.so.1" -exec echo {} \;
-#find /home/rory/ -type f -name "libm.so.6" -exec echo {} \;
-#find /home/rory/ -type f -name "libresolv.so.2" -exec echo {} \;
-#find /home/rory/ -type f -name "libc.so.6" -exec echo {} \;
+find / -type f -name "lib/ld-linux-aarch64.so.1" -exec echo {} \;
+find / -type f -name "libm.so.6" -exec echo {} \;
+find / -type f -name "libresolv.so.2" -exec echo {} \;
+find / -type f -name "libc.so.6" -exec echo {} \;
 
 #find /home/rory/ARM_ToolChain/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/ -type f -name "ld-linux-aarch64.so.1" -exec echo {} \;
 #find /home/rory/ARM_ToolChain/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/ -type f -name "libm.so.6" -exec echo {} \;
 #find /home/rory/ARM_ToolChain/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/ -type f -name "libresolv.so.2" -exec echo {} \;
 #find /home/rory/ARM_ToolChain/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/ -type f -name "libc.so.6" -exec echo {} \;
 
-find /home/ -type f -name "ld-linux-aarch64.so.1" -exec cp {} ${OUTDIR}/rootfs/lib/ \;
-find /home/ -type f -name "libm.so.6" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
-find /home/ -type f -name "libresolv.so.2" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
-find /home/ -type f -name "libc.so.6" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
+find / -type f -name "ld-linux-aarch64.so.1" -exec cp {} ${OUTDIR}/rootfs/lib/ \;
+find / -type f -name "libm.so.6" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
+find / -type f -name "libresolv.so.2" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
+find / -type f -name "libc.so.6" -exec cp {} ${OUTDIR}/rootfs/lib64/ \;
 
 # TODO: Make device nodes
 cd "$OUTDIR/rootfs"

@@ -128,6 +128,6 @@ cd "$OUTDIR/rootfs"
 find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
 gzip -f ${OUTDIR}/initramfs.cpio
 
-sleep 600m
+#sleep 600m
 
 

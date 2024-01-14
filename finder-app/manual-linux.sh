@@ -123,10 +123,7 @@ cp autorun-qemu.sh ${OUTDIR}/rootfs/home
 
 # TODO: Chown the root directory
 sudo chown -R :users ${OUTDIR}/rootfs
-
 # TODO: Create initramfs.cpio.gz
 cd "$OUTDIR/rootfs"
 find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
 gzip -f ${OUTDIR}/initramfs.cpio
-
-read -p "Wait"

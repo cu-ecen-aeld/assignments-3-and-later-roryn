@@ -121,13 +121,13 @@ cp -r conf/username.txt ${OUTDIR}/rootfs/home/conf
 cp -r conf/assignment.txt ${OUTDIR}/rootfs/home/conf
 cp autorun-qemu.sh ${OUTDIR}/rootfs/home
 
-sleep 60m
-
 # TODO: Chown the root directory
 sudo chown -R :users ${OUTDIR}/rootfs
 # TODO: Create initramfs.cpio.gz
 cd "$OUTDIR/rootfs"
 find . | cpio -H newc -ov --owner root:root > ${OUTDIR}/initramfs.cpio
 gzip -f ${OUTDIR}/initramfs.cpio
+
+sleep 600m
 
 

@@ -27,10 +27,9 @@ void* threadfunc(void* thread_param)
         if (rc != 0)
         ERROR_LOG("Failed to unlock");
 
+    thread_args->thread_complete_success = true;
+
     pthread_exit((void *)thread_args);
-    // TODO: wait, obtain mutex, wait, release mutex as described by thread_data structure
-    // hint: use a cast like the one below to obtain thread arguments from your parameter
-    //struct thread_data* thread_func_args = (struct thread_data *) thread_param;
     return thread_param;
 }
 
@@ -43,42 +42,15 @@ bool start_thread_obtaining_mutex(pthread_t *thread, pthread_mutex_t *mutex, int
     thread_params->wait_to_release_ms = wait_to_release_ms;
     thread_params->mutex = mutex;
 
-    void * ret_val;
-
-    DEBUG_LOG("Initializing mutex");
-    int rc = pthread_mutex_init(mutex, NULL);
-
-    if (rc != 0)
-        ERROR_LOG("Intializing mutex failed");
-
     DEBUG_LOG("Creating Thread");
-    rc = pthread_create(thread, NULL, threadfunc, thread_params);
+    int rc = pthread_create(thread, NULL, threadfunc, thread_params);
 
     if (rc != 0)
+    {
         ERROR_LOG("Creating thread failed");
+        return false;
+    }
 
-    DEBUG_LOG("Joining Thread");
-    rc = pthread_join((pthread_t)*thread, &ret_val);
-
-    if (rc != 0)
-        ERROR_LOG("Joining thread failed");
-
-    struct thread_data* thread_params_ret = (struct thread_data*)ret_val;
-    /**
-     * TODO: allocate memory for thread_data, setup mutex and wait arguments, pass thread_data to created thread
-     * using threadfunc() as entry point.
-     *
-     * return true if successful.
-     *
-     * See implementation details in threading.h file comment block
-     */
-    DEBUG_LOG("Freeing Pointer");
-
-    free(thread_params);
-
-    if (thread_params_ret->thread_complete_success)
-        return true;
-    
-    return false;
+    return true;
 }
 

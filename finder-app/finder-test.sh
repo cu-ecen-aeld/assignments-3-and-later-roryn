@@ -12,8 +12,6 @@ RESULTDIR=/tmp
 SCRIPTDIR=dirname $0 
 username=$(cat ${SCRIPTDIR}/conf/username.txt)
 
-echo $0
-
 if [ $# -lt 3 ]
 then
 	echo "Using default value ${WRITESTR} for string to write"

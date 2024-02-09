@@ -9,7 +9,7 @@ NUMFILES=10
 WRITESTR=AELD_IS_FUN
 WRITEDIR=/tmp/aeld-data
 RESULTDIR=/tmp
-SCRIPTDIR=dirname $0 
+SCRIPTDIR=`dirname $0`
 username=$(cat ${SCRIPTDIR}/conf/username.txt)
 
 if [ $# -lt 3 ]
@@ -34,7 +34,7 @@ echo "Writing ${NUMFILES} files containing string ${WRITESTR} to ${WRITEDIR}"
 rm -rf "${WRITEDIR}"
 
 # create $WRITEDIR if not assignment1
-assignment=`cat SCRIPTDIR/conf/assignment.txt`
+assignment=${username}
 
 if [ $assignment != 'assignment1' ]
 then

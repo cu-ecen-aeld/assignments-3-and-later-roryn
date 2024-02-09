@@ -9,7 +9,7 @@ NUMFILES=10
 WRITESTR=AELD_IS_FUN
 WRITEDIR=/tmp/aeld-data
 RESULTDIR=/tmp
-SCRIPTDIR=`dirname $0`
+SCRIPTDIR=/etc/finder-app/conf
 username=$(cat ${SCRIPTDIR}/conf/username.txt)
 
 if [ $# -lt 3 ]

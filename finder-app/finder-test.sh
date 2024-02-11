@@ -11,7 +11,7 @@ WRITEDIR=/tmp/aeld-data
 RESULTDIR=/tmp
 CONFDIR=/etc/finder-app
 SCRIPTDIR=$(dirname $0)
-username=$(cat ${SCRIPTDIR}/conf/username.txt)
+username=$(cat ${CONFDIR}/conf/username.txt)
 
 if [ $# -lt 3 ]
 then

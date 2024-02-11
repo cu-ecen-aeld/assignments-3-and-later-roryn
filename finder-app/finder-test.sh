@@ -9,7 +9,8 @@ NUMFILES=10
 WRITESTR=AELD_IS_FUN
 WRITEDIR=/tmp/aeld-data
 RESULTDIR=/tmp
-SCRIPTDIR=/etc/finder-app
+CONFDIR=/etc/finder-app
+SCRIPTDIR=$(dirname $0)
 username=$(cat ${SCRIPTDIR}/conf/username.txt)
 
 if [ $# -lt 3 ]
@@ -54,15 +55,15 @@ fi
 
 for i in $( seq 1 $NUMFILES)
 do
-	./writer "$WRITEDIR/${username}$i.txt" "$WRITESTR"
+	${SCRIPTDIR}/writer "$WRITEDIR/${username}$i.txt" "$WRITESTR"
 done
 
-OUTPUTSTRING=$(./finder.sh "$WRITEDIR" "$WRITESTR")
+OUTPUTSTRING=$(${SCRIPTDIR}/finder.sh "$WRITEDIR" "$WRITESTR")
 
 # remove temporary directories
 rm -rf /tmp/aeld-data
 
-./writer "$RESULTDIR/assignment-4-result.txt" "$OUTPUTSTRING"
+${SCRIPTDIR}/writer "$RESULTDIR/assignment-4-result.txt" "$OUTPUTSTRING"
 
 set +e
 echo ${OUTPUTSTRING} | grep "${MATCHSTR}"
